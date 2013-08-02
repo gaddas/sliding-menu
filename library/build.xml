@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="slidingmenu" default="help">
+<project name="sliding-menu" default="help">
 
     <exec executable="mvn">
         <arg line="clean install" />
