@@ -69,12 +69,31 @@
 				<version>17_r1</version>
 			</dependency>
 			<dependency>
-				<groupId>com.google.android</groupId>
+				<groupId>com.android.support</groupId>
 				<artifactId>support-v4</artifactId>
-				<version>r7</version>
+				<version>18.0.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+  <repositories>
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>warn</checksumPolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+        <updatePolicy>never</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+      <id>androidSupport</id>
+      <name>Android Support Repository</name>
+      <url>file://${env.ANDROID_HOME}/extras/android/m2repository</url>
+      <layout>default</layout>
+    </repository>
+  </repositories>
 
 	<build>
 		<pluginManagement>
