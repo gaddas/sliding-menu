@@ -810,7 +810,7 @@ public class SlidingMenu extends RelativeLayout {
 			    if (b) {
 				    mViewForBackground.setBackgroundResource(mBackground);
 			    } else {
-				    mViewForBackground.setBackground(null);
+				    mViewForBackground.setBackgroundResource(0);
 			    }
 			}
 			mAddBackground = b;
