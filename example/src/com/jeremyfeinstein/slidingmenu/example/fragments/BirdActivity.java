@@ -7,17 +7,16 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.MenuItem;
 import com.jeremyfeinstein.slidingmenu.example.R;
 
-public class BirdActivity extends SherlockActivity {
+public class BirdActivity extends Activity {
 
 	private Handler mHandler;
 	
@@ -38,13 +37,14 @@ public class BirdActivity extends SherlockActivity {
 		String[] birds = getResources().getStringArray(R.array.birds);
 		TypedArray imgs = getResources().obtainTypedArray(R.array.birds_img);
 		int resId = imgs.getResourceId(pos, -1);
+		imgs.recycle();
 		
 		setTitle(birds[pos]);
 		getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
 		ColorDrawable color = new ColorDrawable(Color.BLACK);
 		color.setAlpha(128);
-		getSupportActionBar().setBackgroundDrawable(color);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setBackgroundDrawable(color);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		mHandler = new Handler();
 		
 		ImageView imageView = new ImageView(this);
@@ -52,7 +52,7 @@ public class BirdActivity extends SherlockActivity {
 		imageView.setImageResource(resId);
 		imageView.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				getSupportActionBar().show();
+				getActionBar().show();
 				hideActionBarDelayed(mHandler);
 			}
 		});
@@ -63,7 +63,7 @@ public class BirdActivity extends SherlockActivity {
 	@Override
 	public void onResume() {
 		super.onResume();
-		getSupportActionBar().show();
+		getActionBar().show();
 		hideActionBarDelayed(mHandler);
 	}
 	
@@ -80,7 +80,7 @@ public class BirdActivity extends SherlockActivity {
 	private void hideActionBarDelayed(Handler handler) {
 		handler.postDelayed(new Runnable() {
 			public void run() {
-				getSupportActionBar().hide();
+				getActionBar().hide();
 			}
 		}, 2000);
 	}
